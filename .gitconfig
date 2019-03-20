@@ -1,0 +1,35 @@
+[alias]
+  amend = commit --amend --no-edit
+  fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET && GIT_SEQUENCE_EDITOR=: git rebase -i --autostash --autosquash $TARGET^; }; f"
+  fuck = reset --hard
+  recent = log --pretty=format:'%Cgreen%h%Creset - %s%C(yellow)%d%Creset' -20
+  phoenix = commit --reuse-message=HEAD@{1}
+
+[diff]
+  tool = smerge
+[difftool "smerge"]
+  cmd = smerge \"$LOCAL\"
+
+[merge]
+  tool = meld
+[mergetool "meld"]
+  external = ~/.dotfiles/bin/git-meld
+
+# [merge]
+#   tool = smerge
+# [mergetool "smerge"]
+#   cmd = smerge mergetool \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\" /the/luggage
+#   trustExitCode = true
+
+[difftool]
+	prompt = false
+
+[mergetool]
+  prompt = false
+
+[user]
+  name = Jordan Werthman
+  email = jordanwerthman@gmail.com
+
+[include]
+  path = ~/.gitconfig.local
