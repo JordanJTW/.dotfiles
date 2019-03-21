@@ -6,6 +6,8 @@ case $- in
       *) return;;
 esac
 
+source ~/.dotfiles/bin/git-prompt
+
 shopt -s globstar
 
 export PROMPT_DIRTRIM=3
@@ -26,3 +28,6 @@ alias cls='clear'
 if [ -f $HOME/.bashrc.local ]; then
     . $HOME/.bashrc.local
 fi
+
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
